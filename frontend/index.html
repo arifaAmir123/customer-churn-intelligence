@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Customer Churn Intelligence | ChurnIQ</title>
+
+    <link
+        rel="stylesheet"
+        href="/frontend/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     APP SHELL
+========================================================= -->
+
+<div class="app-shell">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <path
+                        d="M12 2L19 5V11C19 16 16 20 12 22C8 20 5 16 5 11V5L12 2Z"
+                    />
+
+                    <path
+                        d="M9 12L11 14L15 10"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <h2>ChurnIQ</h2>
+
+                <span>
+                    Customer Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="sidebar-nav">
+
+            <!-- DASHBOARD -->
+
+            <button
+                class="nav-item active"
+                type="button"
+                data-section="dashboardSection"
+                onclick="navigateToSection('dashboardSection', this)"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+
+                </svg>
+
+                <span>Dashboard</span>
+
+            </button>
+
+
+            <!-- CUSTOMERS -->
+
+            <button
+                class="nav-item"
+                type="button"
+                data-section="customersSection"
+                onclick="navigateToSection('customersSection', this)"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <path d="M16 21V19C16 16.8 14.2 15 12 15H6C3.8 15 2 16.8 2 19V21"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21V19C22 17.2 20.8 15.7 19 15.2"/>
+                    <path d="M16 3.2C17.7 3.7 19 5.2 19 7C19 8.8 17.7 10.3 16 10.8"/>
+
+                </svg>
+
+                <span>Customers</span>
+
+            </button>
+
+
+            <!-- PREDICTIONS -->
+
+            <button
+                class="nav-item"
+                type="button"
+                data-section="predictionSection"
+                onclick="navigateToSection('predictionSection', this)"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <path d="M12 2L19 5V11C19 16 16 20 12 22C8 20 5 16 5 11V5L12 2Z"/>
+                    <path d="M12 8V12"/>
+                    <circle cx="12" cy="16" r="0.5"/>
+
+                </svg>
+
+                <span>Predictions</span>
+
+            </button>
+
+
+            <!-- ANALYTICS -->
+
+            <button
+                class="nav-item"
+                type="button"
+                data-section="analyticsSection"
+                onclick="navigateToSection('analyticsSection', this)"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <polyline points="3 17 9 11 13 15 21 7"/>
+                    <polyline points="14 7 21 7 21 14"/>
+
+                </svg>
+
+                <span>Analytics</span>
+
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <button
+                class="nav-item"
+                type="button"
+                data-section="settingsSection"
+                onclick="navigateToSection('settingsSection', this)"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+
+                    <circle cx="12" cy="12" r="3"/>
+
+                    <path
+                        d="M19.4 15A1.7 1.7 0 0 0 19.7 17L20 17.3L17.3 20L17 19.7A1.7 1.7 0 0 0 15 19.4C14.6 19.7 14.3 20.2 14.3 20.7V21H9.7V20.7C9.7 20.2 9.4 19.7 9 19.4A1.7 1.7 0 0 0 7 19.7L6.7 20L4 17.3L4.3 17A1.7 1.7 0 0 0 4.6 15C4.3 14.6 3.8 14.3 3.3 14.3H3V9.7H3.3C3.8 9.7 4.3 9.4 4.6 9A1.7 1.7 0 0 0 4.3 7L4 6.7L6.7 4L7 4.3A1.7 1.7 0 0 0 9 4.6C9.4 4.3 9.7 3.8 9.7 3.3V3H14.3V3.3C14.3 3.8 14.6 4.3 15 4.6A1.7 1.7 0 0 0 17 4.3L17.3 4L20 6.7L19.7 7A1.7 1.7 0 0 0 19.4 9C19.7 9.4 20.2 9.7 20.7 9.7H21V14.3H20.7C20.2 14.3 19.7 14.6 19.4 15Z"
+                    />
+
+                </svg>
+
+                <span>Settings</span>
+
+            </button>
+
+        </nav>
+
+
+        <!-- SIDEBAR STATUS -->
+
+        <div class="sidebar-bottom">
+
+            <div class="model-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>Model Online</strong>
+
+                    <small>
+                        FastAPI Prediction Service
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="eyebrow">
+                    CUSTOMER INTELLIGENCE
+                </div>
+
+                <h1 id="pageTitle">
+                    Customer Churn Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+
+                <div class="api-status">
+
+                    <span class="status-dot"></span>
+
+                    API Online
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    type="button"
+                    onclick="refreshDashboard()"
+                    title="Refresh dashboard"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+
+                        <polyline
+                            points="23 4 23 10 17 10"
+                        />
+
+                        <polyline
+                            points="1 20 1 14 7 14"
+                        />
+
+                        <path
+                            d="M3.5 9A9 9 0 0 1 18.5 5L23 10"
+                        />
+
+                        <path
+                            d="M20.5 15A9 9 0 0 1 5.5 19L1 14"
+                        />
+
+                    </svg>
+
+                </button>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD SECTION
+        ================================================== -->
+
+        <section
+            class="content-section active"
+            id="dashboardSection"
+        >
+
+
+            <!-- WELCOME -->
+
+            <section class="welcome-banner">
+
+                <div>
+
+                    <div class="eyebrow">
+                        AI-POWERED RETENTION
+                    </div>
+
+                    <h2>
+                        Turn customer data into
+                        <span>retention decisions.</span>
+                    </h2>
+
+                    <p>
+                        ChurnIQ analyzes customer behavior and
+                        predicts churn risk so businesses can
+                        identify high-risk customers and take
+                        proactive retention actions.
+                    </p>
+
+                </div>
+
+
+                <div class="banner-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                    >
+
+                        <path
+                            d="M12 3L20 7V12C20 17 16.5 20.5 12 22C7.5 20.5 4 17 4 12V7L12 3Z"
+                        />
+
+                        <path
+                            d="M8 13L10.5 15.5L16 10"
+                        />
+
+                    </svg>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- KPI CARDS -->
+
+            <section class="kpi-grid">
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-icon blue">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+
+                            <path
+                                d="M16 21V19C16 16.8 14.2 15 12 15H6C3.8 15 2 16.8 2 19V21"
+                            />
+
+                            <circle
+                                cx="9"
+                                cy="7"
+                                r="4"
+                            />
+
+                            <path
+                                d="M16 3.5C17.7 4 19 5.4 19 7C19 8.6 17.7 10 16 10.5"
+                            />
+
+                            <path
+                                d="M19 15C21 15.3 22 16.7 22 19V21"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <span>Total Customers</span>
+
+                        <strong
+                            class="card-value"
+                            id="totalCustomers"
+                        >
+                            7,043
+                        </strong>
+
+                        <small>Customers analyzed</small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-icon red">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+
+                            <path
+                                d="M12 3L20 7V12C20 17 16.5 20.5 12 22C7.5 20.5 4 17 4 12V7L12 3Z"
+                            />
+
+                            <path
+                                d="M12 8V13"
+                            />
+
+                            <circle
+                                cx="12"
+                                cy="17"
+                                r="0.6"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <span>Churned Customers</span>
+
+                        <strong
+                            class="card-value"
+                            id="churnedCustomers"
+                        >
+                            1,869
+                        </strong>
+
+                        <small>Customers lost</small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-icon orange">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+
+                            <polyline
+                                points="3 17 9 11 13 15 21 7"
+                            />
+
+                            <polyline
+                                points="14 7 21 7 21 14"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <span>Churn Rate</span>
+
+                        <strong
+                            class="card-value"
+                            id="churnRate"
+                        >
+                            26.54%
+                        </strong>
+
+                        <small>Overall churn percentage</small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-icon green">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+
+                            <path
+                                d="M20 6L9 17L4 12"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        <span>Active Customers</span>
+
+                        <strong
+                            class="card-value"
+                            id="activeCustomers"
+                        >
+                            5,174
+                        </strong>
+
+                        <small>Currently retained</small>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- DASHBOARD METRICS -->
+
+            <section class="chart-grid">
+
+
+                <div class="chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <h3>
+                                Customer Retention Distribution
+                            </h3>
+
+                            <p>
+                                Active versus churned customers
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-summary">
+
+
+                        <div class="status-row">
+
+                            <span>
+
+                                <span class="legend-dot retained"></span>
+
+                                Active Customers
+
+                            </span>
+
+                            <strong id="activePercentage">
+                                73.46%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="retained-progress"
+                                class="churn-no"
+                                style="width:73.46%;"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <span>
+
+                                <span class="legend-dot churned"></span>
+
+                                Churned Customers
+
+                            </span>
+
+                            <strong id="churnedPercentage">
+                                26.54%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="churned-progress"
+                                class="churn-yes"
+                                style="width:26.54%;"
+                            ></div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <h3>Customer Metrics</h3>
+
+                            <p>Dataset overview</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-summary">
+
+
+                        <div class="status-row">
+
+                            <span>
+                                Average Monthly Charges
+                            </span>
+
+                            <strong id="avgMonthlyCharges">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <span>
+                                Average Tenure
+                            </span>
+
+                            <strong id="avgTenure">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <span>
+                                Active Customers
+                            </span>
+
+                            <strong id="activeMetric">
+                                5,174
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-row">
+
+                            <span>
+                                Churned Customers
+                            </span>
+
+                            <strong id="churnedMetric">
+                                1,869
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PREDICTION SECTION
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="predictionSection"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Churn Prediction</h2>
+
+                    <p class="section-description">
+                        Evaluate the churn risk of a customer
+                        using the trained FastAPI prediction service.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="prediction-layout">
+
+
+                <!-- PREDICTION FORM -->
+
+                <div class="prediction-card">
+
+
+                    <div class="card-title">
+
+                        <div class="kpi-icon blue">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+
+                                <path
+                                    d="M12 2L19 5V11C19 16 16 20 12 22C8 20 5 16 5 11V5L12 2Z"
+                                />
+
+                                <path
+                                    d="M12 8V12"
+                                />
+
+                                <circle
+                                    cx="12"
+                                    cy="16"
+                                    r="0.5"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Customer Risk Assessment
+                            </h3>
+
+                            <p>
+                                Enter customer information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CUSTOMER ID -->
+
+                    <div
+                        class="form-group"
+                        style="margin-bottom:16px;"
+                    >
+
+                        <label for="customerSearch">
+                            Customer ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerSearch"
+                            placeholder="e.g. 7590-VHVEG"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- GENDER -->
+
+                        <div class="form-group">
+
+                            <label for="gender">
+                                Gender
+                            </label>
+
+                            <select id="gender">
+
+                                <option value="">Select</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- SENIOR CITIZEN -->
+
+                        <div class="form-group">
+
+                            <label for="SeniorCitizen">
+                                Senior Citizen
+                            </label>
+
+                            <select id="SeniorCitizen">
+
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PARTNER -->
+
+                        <div class="form-group">
+
+                            <label for="Partner">
+                                Partner
+                            </label>
+
+                            <select id="Partner">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DEPENDENTS -->
+
+                        <div class="form-group">
+
+                            <label for="Dependents">
+                                Dependents
+                            </label>
+
+                            <select id="Dependents">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- TENURE -->
+
+                        <div class="form-group">
+
+                            <label for="tenure">
+                                Tenure (Months)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="tenure"
+                                placeholder="e.g. 12"
+                                min="0"
+                            >
+
+                        </div>
+
+
+                        <!-- PHONE SERVICE -->
+
+                        <div class="form-group">
+
+                            <label for="PhoneService">
+                                Phone Service
+                            </label>
+
+                            <select id="PhoneService">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- MULTIPLE LINES -->
+
+                        <div class="form-group">
+
+                            <label for="MultipleLines">
+                                Multiple Lines
+                            </label>
+
+                            <select id="MultipleLines">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No phone service">
+                                    No phone service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- INTERNET -->
+
+                        <div class="form-group">
+
+                            <label for="InternetService">
+                                Internet Service
+                            </label>
+
+                            <select id="InternetService">
+
+                                <option value="">Select</option>
+                                <option value="DSL">DSL</option>
+                                <option value="Fiber optic">
+                                    Fiber optic
+                                </option>
+                                <option value="No">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- ONLINE SECURITY -->
+
+                        <div class="form-group">
+
+                            <label for="OnlineSecurity">
+                                Online Security
+                            </label>
+
+                            <select id="OnlineSecurity">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- ONLINE BACKUP -->
+
+                        <div class="form-group">
+
+                            <label for="OnlineBackup">
+                                Online Backup
+                            </label>
+
+                            <select id="OnlineBackup">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DEVICE PROTECTION -->
+
+                        <div class="form-group">
+
+                            <label for="DeviceProtection">
+                                Device Protection
+                            </label>
+
+                            <select id="DeviceProtection">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- TECH SUPPORT -->
+
+                        <div class="form-group">
+
+                            <label for="TechSupport">
+                                Tech Support
+                            </label>
+
+                            <select id="TechSupport">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STREAMING TV -->
+
+                        <div class="form-group">
+
+                            <label for="StreamingTV">
+                                Streaming TV
+                            </label>
+
+                            <select id="StreamingTV">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STREAMING MOVIES -->
+
+                        <div class="form-group">
+
+                            <label for="StreamingMovies">
+                                Streaming Movies
+                            </label>
+
+                            <select id="StreamingMovies">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="No internet service">
+                                    No internet service
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- CONTRACT -->
+
+                        <div class="form-group">
+
+                            <label for="Contract">
+                                Contract
+                            </label>
+
+                            <select id="Contract">
+
+                                <option value="">Select</option>
+                                <option value="Month-to-month">
+                                    Month-to-month
+                                </option>
+                                <option value="One year">
+                                    One year
+                                </option>
+                                <option value="Two year">
+                                    Two year
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PAPERLESS -->
+
+                        <div class="form-group">
+
+                            <label for="PaperlessBilling">
+                                Paperless Billing
+                            </label>
+
+                            <select id="PaperlessBilling">
+
+                                <option value="">Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PAYMENT -->
+
+                        <div class="form-group">
+
+                            <label for="PaymentMethod">
+                                Payment Method
+                            </label>
+
+                            <select id="PaymentMethod">
+
+                                <option value="">Select</option>
+
+                                <option value="Electronic check">
+                                    Electronic check
+                                </option>
+
+                                <option value="Mailed check">
+                                    Mailed check
+                                </option>
+
+                                <option value="Bank transfer (automatic)">
+                                    Bank transfer (automatic)
+                                </option>
+
+                                <option value="Credit card (automatic)">
+                                    Credit card (automatic)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- MONTHLY CHARGES -->
+
+                        <div class="form-group">
+
+                            <label for="MonthlyCharges">
+                                Monthly Charges
+                            </label>
+
+                            <input
+                                type="number"
+                                id="MonthlyCharges"
+                                placeholder="e.g. 70.35"
+                                step="0.01"
+                            >
+
+                        </div>
+
+
+                        <!-- TOTAL CHARGES -->
+
+                        <div class="form-group">
+
+                            <label for="TotalCharges">
+                                Total Charges
+                            </label>
+
+                            <input
+                                type="number"
+                                id="TotalCharges"
+                                placeholder="e.g. 844.20"
+                                step="0.01"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- PREDICTION BUTTON -->
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="predictionButton"
+                        onclick="analyzeCustomer()"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+
+                            <path d="M22 2L11 13"/>
+
+                            <polygon
+                                points="22 2 15 22 11 13 2 9 22 2"
+                            />
+
+                        </svg>
+
+                        Run Churn Prediction
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- PREDICTION RESULT -->
+
+                <div
+                    class="prediction-result"
+                    id="predictionResult"
+                >
+
+
+                    <div
+                        class="result-placeholder"
+                        id="predictionPlaceholder"
+                    >
+
+                        <div class="result-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+
+                                <path
+                                    d="M12 2L19 5V11C19 16 16 20 12 22C8 20 5 16 5 11V5L12 2Z"
+                                />
+
+                                <path d="M12 8V12"/>
+
+                                <circle
+                                    cx="12"
+                                    cy="16"
+                                    r="0.5"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Prediction Result
+                        </h3>
+
+
+                        <p>
+                            Enter a customer ID and run the
+                            churn prediction model to view
+                            the customer's risk assessment.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- RESULT DATA -->
+
+                    <div
+                        id="predictionData"
+                        style="display:none;width:100%;"
+                    >
+
+                        <div class="card-title">
+
+                            <div>
+
+                                <h3>
+                                    Prediction Result
+                                </h3>
+
+                                <p>
+                                    AI-generated customer risk assessment
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="form-grid"
+                            style="margin-top:20px;"
+                        >
+
+                            <div class="metric-card">
+
+                                <span>Risk Level</span>
+
+                                <strong id="riskLevel">
+                                    --
+                                </strong>
+
+                                <small>
+                                    Model classification
+                                </small>
+
+                            </div>
+
+
+                            <div class="metric-card">
+
+                                <span>Churn Probability</span>
+
+                                <strong id="churnProbability">
+                                    --
+                                </strong>
+
+                                <small>
+                                    Predicted probability
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                margin-top:22px;
+                                padding:18px;
+                                border-radius:12px;
+                                background:#f8fafc;
+                                border:1px solid #e7eaf0;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    display:block;
+                                    font-size:11px;
+                                    font-weight:600;
+                                    color:#667085;
+                                    margin-bottom:8px;
+                                "
+                            >
+                                Recommended Retention Action
+                            </span>
+
+
+                            <strong
+                                id="recommendation"
+                                style="
+                                    display:block;
+                                    font-size:14px;
+                                    line-height:1.6;
+                                    color:#172033;
+                                "
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CUSTOMERS SECTION
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="customersSection"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        High-Risk Customers
+                    </h2>
+
+                    <p class="section-description">
+                        Customers ranked by predicted churn probability.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    onclick="loadRiskCustomers()"
+                >
+                    Refresh Risk Customers
+                </button>
+
+            </div>
+
+
+            <div class="chart-card">
+
+                <div class="table-container">
+
+                    <table class="risk-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Customer ID</th>
+
+                                <th>Churn Probability</th>
+
+                                <th>Risk Level</th>
+
+                                <th>Retention Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="riskCustomersTable">
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="table-loading"
+                                >
+                                    Loading high-risk customers...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYTICS SECTION
+             ONLY THIS SECTION HAS BEEN UPDATED
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="analyticsSection"
+        >
+
+
+            <!-- =================================================
+                 ANALYTICS HEADER
+            ================================================== -->
+
+            <div class="section-header">
+
+                <div>
+
+                    <div class="eyebrow">
+                    
+                    </div>
+
+                    <h2>
+                        Analytics
+                    </h2>
+
+                    <p class="section-description">
+                        Identify high-risk customers, quantify revenue
+                        exposure, and prioritize retention opportunities
+                        using the churn intelligence dataset.
+                    </p>
+
+                </div>
+
+
+                <div class="analytics-live-status">
+
+                    <span class="live-dot"></span>
+
+                    
+
+                </div>
+
+            </div>
+
+
+
+          
+
+
+               
+
+        <!-- =========================================================
+     CHURNIQ — ENTERPRISE ANALYTICS
+     ========================================================= -->
+
+<section id="analyticsSection" class="analytics-section">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <div class="analytics-header">
+
+        <div>
+            <span class="analytics-eyebrow">
+               
+            </span>
+
+            <h1>
+                
+            </h1>
+
+            <p>
+                
+            </p>
+        </div>
+
+       
+    </div>
+
+
+    <!-- =====================================================
+         EXECUTIVE KPI STRIP
+         ===================================================== -->
+
+    <div class="analytics-kpi-grid">
+
+        <div class="analytics-kpi-card">
+
+            <span class="analytics-kpi-label">
+                REVENUE EXPOSURE
+            </span>
+
+            <strong
+                id="analyticsRevenueExposure"
+                class="analytics-kpi-value"
+            >
+                Loading...
+            </strong>
+
+            <span class="analytics-kpi-description">
+                Monthly revenue at risk
+            </span>
+
+        </div>
+
+
+        <div class="analytics-kpi-card">
+
+            <span class="analytics-kpi-label">
+                HIGH-RISK CUSTOMERS
+            </span>
+
+            <strong
+                id="analyticsRiskCustomers"
+                class="analytics-kpi-value"
+            >
+                --
+            </strong>
+
+            <span class="analytics-kpi-description">
+                Customers requiring attention
+            </span>
+
+        </div>
+
+
+        <div class="analytics-kpi-card">
+
+            <span class="analytics-kpi-label">
+                REVENUE SHARE AT RISK
+            </span>
+
+            <strong
+                id="analyticsRevenueShare"
+                class="analytics-kpi-value"
+            >
+                --
+            </strong>
+
+            <span class="analytics-kpi-description">
+                Percentage of monthly revenue
+            </span>
+
+        </div>
+
+
+        <div class="analytics-kpi-card">
+
+            <span class="analytics-kpi-label">
+                AVG. RISK CUSTOMER VALUE
+            </span>
+
+            <strong
+                id="analyticsAvgRiskRevenue"
+                class="analytics-kpi-value"
+            >
+                --
+            </strong>
+
+            <span class="analytics-kpi-description">
+                Average monthly charges
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         VISUAL 1 — FINANCIAL RISK
+         ===================================================== -->
+
+    <div class="analytics-section-label">
+        FINANCIAL RISK
+    </div>
+
+
+    <div class="financial-risk-card">
+
+        <!-- LEFT -->
+        <div class="financial-risk-main">
+
+            <div class="financial-risk-title-row">
+
+                <div>
+                    <span class="visual-label">
+                        REVENUE AT RISK
+                    </span>
+
+                    <h2>
+                        Monthly recurring revenue exposed
+                        to elevated churn probability.
+                    </h2>
+                </div>
+
+              
+
+            </div>
+
+
+            <div class="financial-gauge-wrapper">
+
+                <div class="financial-gauge">
+
+                    <div
+                        id="financialGaugeFill"
+                        class="financial-gauge-fill"
+                    ></div>
+
+                    <div class="financial-gauge-inner">
+
+                        <span
+                            id="financialGaugePercentage"
+                            class="gauge-percentage"
+                        >
+                            0%
+                        </span>
+
+                        <span class="gauge-caption">
+                            REVENUE AT RISK
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="financial-gauge-details">
+
+                    <span class="gauge-detail-label">
+                        MONTHLY EXPOSURE
+                    </span>
+
+                    <strong
+                        id="revenueExposureDisplay"
+                    >
+                        --
+                    </strong>
+
+                    <span class="gauge-detail-subtitle">
+                        recurring revenue exposed
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+        <div class="financial-risk-side">
+
+            <div class="financial-mini-card">
+
+                <span>
+                    REVENUE AT RISK
+                </span>
+
+                <strong
+                    id="revenueShareAtRisk"
+                >
+                    --
+                </strong>
+
+                <small>
+                    of total monthly revenue
+                </small>
+
+            </div>
+
+
+           
+
+            <div class="financial-exposure-level">
+
+                <span class="level-label">
+                    EXPOSURE LEVEL
+                </span>
+
+                <strong id="exposureLevel">
+                    Elevated Exposure
+                </strong>
+
+                <div class="exposure-bar">
+                    <div
+                        id="exposureBarFill"
+                        class="exposure-bar-fill"
+                    ></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FINANCIAL INSIGHT
+         ===================================================== -->
+
+    <div class="financial-insight">
+
+        <div class="insight-icon">
+            $
+        </div>
+
+        <div>
+
+            <span>
+                FINANCIAL INSIGHT
+            </span>
+
+            <p id="revenueExposureInsight">
+                Loading financial intelligence...
+            </p>
+
+        </div>
+
+    </div>
+
+
+   
+
+        <!-- =================================================
+             SETTINGS SECTION
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="settingsSection"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Settings
+                    </h2>
+
+                    <p class="section-description">
+                        ChurnIQ dashboard and prediction service configuration.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+
+                <!-- API STATUS -->
+
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="kpi-icon green">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9"
+                                />
+
+                                <path
+                                    d="M8 12L11 15L16 9"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                API Connection
+                            </h3>
+
+                            <p>
+                                FastAPI prediction service
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <span>
+                            API Status
+                        </span>
+
+                        <strong
+                            id="settingsApiStatus"
+                            class="setting-status online"
+                        >
+                            Online
+                        </strong>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <span>
+                            Endpoint
+                        </span>
+
+                        <code id="settingsApiEndpoint">
+                            Loading server address...
+                        </code>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MODEL STATUS -->
+
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="kpi-icon blue">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+
+                                <path
+                                    d="M12 2L19 5V11C19 16 16 20 12 22C8 20 5 16 5 11V5L12 2Z"
+                                />
+
+                                <path
+                                    d="M9 12L11 14L15 10"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Prediction Model
+                            </h3>
+
+                            <p>
+                                Machine learning service
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <span>
+                            Model Status
+                        </span>
+
+                        <strong
+                            id="settingsModelStatus"
+                            class="setting-status online"
+                        >
+                            Ready
+                        </strong>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <span>
+                            Prediction Threshold
+                        </span>
+
+                        <strong>
+                            25%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DASHBOARD ACTIONS -->
+
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div class="kpi-icon orange">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+
+                                <polyline
+                                    points="23 4 23 10 17 10"
+                                />
+
+                                <polyline
+                                    points="1 20 1 14 7 14"
+                                />
+
+                                <path
+                                    d="M3.5 9A9 9 0 0 1 18.5 5L23 10"
+                                />
+
+                                <path
+                                    d="M20.5 15A9 9 0 0 1 5.5 19L1 14"
+                                />
+
+                            </svg>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Dashboard Actions
+                            </h3>
+
+                            <p>
+                                Manage dashboard state
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            onclick="refreshDashboardFromSettings()"
+                        >
+                            Refresh Dashboard
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            onclick="clearPrediction()"
+                        >
+                            Clear Prediction
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="/frontend/script.js"></script>
+
+
+</body>
+
+</html>
